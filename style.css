@@ -1,3 +1,7 @@
+:root {
+    --main-color: #ff00ff;
+}
+
 body {
     font-family: 'Orbitron', sans-serif;
     background-color: #0d0d0d;
@@ -10,15 +14,15 @@ body {
 
 h1 {
     margin-top: 20px;
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #e0c0ff;
+    color: var(--main-color);
+    text-shadow: 0 0 10px var(--main-color), 0 0 20px var(--main-color), 0 0 30px #e0c0ff;
 }
 
 input, select, button {
     padding: 12px;
     margin: 5px;
     font-size: 16px;
-    border: 2px solid #ff00ff;
+    border: 2px solid var(--main-color);
     border-radius: 5px;
     background-color: #1a1a1a;
     color: #e0c0ff;
@@ -32,9 +36,9 @@ input:focus, select:focus {
 }
 
 button:hover {
-    background-color: #ff00ff;
+    background-color: var(--main-color);
     color: #0d0d0d;
-    box-shadow: 0 0 15px #ff00ff, 0 0 30px #ff99ff;
+    box-shadow: 0 0 15px var(--main-color), 0 0 30px #ff99ff;
 }
 
 ul {
@@ -48,8 +52,8 @@ li {
     padding: 15px;
     width: 400px;
     border-radius: 10px;
-    border: 2px solid #ff00ff;
-    box-shadow: 0 0 10px #ff00ff, 0 0 20px #e0c0ff;
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 10px var(--main-color), 0 0 20px #e0c0ff;
     transition: 0.3s;
 }
 
@@ -60,7 +64,7 @@ li:hover {
 
 .delete-btn {
     background: #330033;
-    border: 2px solid #ff00ff;
+    border: 2px solid var(--main-color);
     color: #ff99ff;
     padding: 5px 10px;
     margin-top: 8px;
@@ -71,7 +75,7 @@ li:hover {
 #undoBtn {
     padding: 10px 20px;
     background-color: #2b002b;
-    border: 2px solid #ff00ff;
+    border: 2px solid var(--main-color);
     color: #ff99ff;
     font-weight: bold;
     cursor: pointer;
@@ -79,9 +83,9 @@ li:hover {
 
 /* Анимации */
 @keyframes neonPulse {
-    0% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #e0c0ff; }
-    50% { box-shadow: 0 0 25px #ff33ff, 0 0 50px #ff99ff; }
-    100% { box-shadow: 0 0 10px #ff00ff, 0 0 20px #e0c0ff; }
+    0% { box-shadow: 0 0 10px var(--main-color), 0 0 20px #e0c0ff; }
+    50% { box-shadow: 0 0 25px var(--main-color), 0 0 50px #ff99ff; }
+    100% { box-shadow: 0 0 10px var(--main-color), 0 0 20px #e0c0ff; }
 }
 
 li.restore {
@@ -89,9 +93,9 @@ li.restore {
 }
 
 @keyframes neonGlow {
-    0% { box-shadow: 0 0 5px #ff00ff, 0 0 10px #e0c0ff; }
-    50% { box-shadow: 0 0 20px #ff33ff, 0 0 40px #ff99ff; }
-    100% { box-shadow: 0 0 5px #ff00ff, 0 0 10px #e0c0ff; }
+    0% { box-shadow: 0 0 5px var(--main-color), 0 0 10px #e0c0ff; }
+    50% { box-shadow: 0 0 20px var(--main-color), 0 0 40px #ff99ff; }
+    100% { box-shadow: 0 0 5px var(--main-color), 0 0 10px #e0c0ff; }
 }
 
 /* История */
@@ -105,10 +109,8 @@ li.restore {
     background: #1a001a;
     margin: 5px auto;
     padding: 8px;
-    border: 1px solid #ff00ff;
+    border: 1px solid var(--main-color);
     cursor: pointer;
     transition: 0.3s;
 }
-.history li:hover {
-    background-color: #330033;
-}
+.history li:hover { background-color: #330033; }
