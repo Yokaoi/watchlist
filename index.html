@@ -9,7 +9,7 @@
 
 <h1>🎬 Киберпанк Watchlist</h1>
 
-<!-- Смена цвета неона -->
+<!-- Темы -->
 <div class="theme-switch">
     <button onclick="changeColor('ff00ff')">Фиолет</button>
     <button onclick="changeColor('00ffff')">Синий</button>
@@ -30,6 +30,7 @@
         <option value="Аниме">Аниме</option>
         <option value="Мультфильм">Мультфильм</option>
     </select>
+    <input type="date" id="date">
     <select id="rating">
         <option value="1">⭐</option>
         <option value="2">⭐⭐</option>
@@ -42,10 +43,10 @@
 
 <!-- Сортировка -->
 <div class="sort">
-    <button onclick="sortBy('rating', 'desc')">⭐ ↓</button>
-    <button onclick="sortBy('rating', 'asc')">⭐ ↑</button>
-    <button onclick="sortBy('title', 'asc')">А-Я</button>
-    <button onclick="sortBy('title', 'desc')">Я-А</button>
+    <button onclick="sortBy('rating','desc')">⭐ ↓</button>
+    <button onclick="sortBy('rating','asc')">⭐ ↑</button>
+    <button onclick="sortBy('title','asc')">А-Я</button>
+    <button onclick="sortBy('title','desc')">Я-А</button>
 </div>
 
 <!-- Фильтр -->
@@ -55,6 +56,13 @@
     <button onclick="filterCategory('Сериал')">Сериалы</button>
     <button onclick="filterCategory('Аниме')">Аниме</button>
     <button onclick="filterCategory('Мультфильм')">Мультфильмы</button>
+    <button onclick="filterFavorites()">⭐ Избранное</button>
+</div>
+
+<!-- Случайный фильм -->
+<div class="random-movie">
+    <button onclick="randomMovie()">🎲 Что посмотреть?</button>
+    <div id="randomOutput"></div>
 </div>
 
 <!-- Список фильмов -->
@@ -63,12 +71,6 @@
 <!-- Undo -->
 <div id="undoContainer" style="display:none;">
     <button id="undoBtn" onclick="undoDelete()">↩️ Отменить удаление</button>
-</div>
-
-<!-- История изменений -->
-<div class="history">
-    <button onclick="showHistory()">📜 История изменений</button>
-    <ul id="historyList"></ul>
 </div>
 
 <script src="script.js"></script>
