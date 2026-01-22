@@ -1,7 +1,10 @@
 const list = document.getElementById("list");
+const undoContainer = document.getElementById("undoContainer");
 let currentFilter = "all";
 
-/* Загрузка и отображение */
+let lastDeleted = null;
+let undoTimeout = null;
+
 function loadItems() {
     const items = JSON.parse(localStorage.getItem("watchlist")) || [];
     list.innerHTML = "";
@@ -27,7 +30,6 @@ function loadItems() {
     });
 }
 
-/* Добавление */
 function addItem() {
     const title = document.getElementById("title").value;
     const category = document.getElementById("category").value;
@@ -47,33 +49,49 @@ function addItem() {
     loadItems();
 }
 
-/* Удаление */
 function deleteItem(index) {
     const items = JSON.parse(localStorage.getItem("watchlist")) || [];
+    lastDeleted = { item: items[index], index: index };
     items.splice(index, 1);
     localStorage.setItem("watchlist", JSON.stringify(items));
     loadItems();
+
+    undoContainer.style.display = "block";
+
+    if (undoTimeout) clearTimeout(undoTimeout);
+    undoTimeout = setTimeout(() => {
+        undoContainer.style.display = "none";
+        lastDeleted = null;
+    }, 5000);
 }
 
-/* Сортировка */
+function undoDelete() {
+    if (!lastDeleted) return;
+
+    const items = JSON.parse(localStorage.getItem("watchlist")) || [];
+    items.splice(lastDeleted.index, 0, lastDeleted.item);
+    localStorage.setItem("watchlist", JSON.stringify(items));
+    loadItems();
+
+    undoContainer.style.display = "none";
+    lastDeleted = null;
+    if (undoTimeout) clearTimeout(undoTimeout);
+}
+
 function sortByRating(order) {
     const items = JSON.parse(localStorage.getItem("watchlist")) || [];
 
     items.sort((a, b) => {
-        return order === "asc"
-            ? a.rating - b.rating
-            : b.rating - a.rating;
+        return order === "asc" ? a.rating - b.rating : b.rating - a.rating;
     });
 
     localStorage.setItem("watchlist", JSON.stringify(items));
     loadItems();
 }
 
-/* Фильтр */
 function filterCategory(category) {
     currentFilter = category;
     loadItems();
 }
 
-/* Запуск при открытии */
 loadItems();
